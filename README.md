@@ -8,7 +8,7 @@
 ## 👥 GROUP MEMBERS
 
 Dejaunae Clue- 2304199 - Product/Cart  
-Shania Foster - 2404262 -   
+Shania Foster - 2404262 - Registration & Login Page
 Jadon Fearon - 2405548 -   
 Nathan-Neil Shelly - 2408989  
 
