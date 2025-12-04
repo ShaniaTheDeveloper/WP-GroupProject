@@ -1,7 +1,7 @@
 document.getElementById("registerForm").addEventListener("submit", function(e){
     e.preventDefault();
 
-    // Get form values
+    //
     let fname = document.getElementById("fname").value;
     let lname = document.getElementById("lname").value;
     let dob = document.getElementById("dob").value;
@@ -12,19 +12,19 @@ document.getElementById("registerForm").addEventListener("submit", function(e){
     let password = document.getElementById("password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
 
-    // ✅ PASSWORD LENGTH CHECK
+    // PASSWORD LENGTH CHECK
     if(password.length < 8){
         alert("Password must be at least 8 characters long.");
         return;
     }
 
-    // ✅ PASSWORD MATCH CHECK
+    // PASSWORD MATCH CHECK
     if(password !== confirmPassword){
         alert("Passwords do not match.");
         return;
     }
 
-    // ✅ AGE CHECK (18+)
+    // AGE CHECK (18+)
     let birthDate = new Date(dob);
     let today = new Date();
     let age = today.getFullYear() - birthDate.getFullYear();
@@ -39,24 +39,24 @@ document.getElementById("registerForm").addEventListener("submit", function(e){
         return;
     }
 
-    // ✅ TRN FORMAT CHECK (000-000-000)
+    // TRN FORMAT CHECK (000-000-000)
     let trnPattern = /^\d{3}-\d{3}-\d{3}$/;
     if(!trnPattern.test(trn)){
         alert("TRN must be in the format 000-000-000.");
         return;
     }
 
-    // ✅ Get existing users
+    // Get existing users
     let users = JSON.parse(localStorage.getItem("RegistrationData")) || [];
 
-    // ✅ TRN UNIQUE CHECK
+    // TRN UNIQUE CHECK
     let trnExists = users.some(user => user.trn === trn);
     if(trnExists){
         alert("This TRN already exists. Please use a different one.");
         return;
     }
 
-    // ✅ REGISTRATION OBJECT
+    // REGISTRATION OBJECT
     let newUser = {
         firstName: fname,
         lastName: lname,
@@ -71,7 +71,7 @@ document.getElementById("registerForm").addEventListener("submit", function(e){
         invoices: []
     };
 
-    // ✅ SAVE TO LOCAL STORAGE
+    // SAVE TO LOCAL STORAGE
     users.push(newUser);
     localStorage.setItem("RegistrationData", JSON.stringify(users));
 
@@ -79,3 +79,4 @@ document.getElementById("registerForm").addEventListener("submit", function(e){
 
     document.getElementById("registerForm").reset();
 });
+
